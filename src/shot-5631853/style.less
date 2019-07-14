@@ -1,0 +1,236 @@
+:root {
+  --bell-x: 0;
+}
+
+body {
+  background-color: #7f50f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  width: 520px;
+  height: 100px;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 25px 15px 5px #00000030;
+
+  .tab-item {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  > input {
+    display: none;
+  }
+
+  > input:checked + label > .tab-container {
+    &:after {
+      animation-name: ring-active;
+      animation-duration: .3s;
+      animation-fill-mode: forwards;
+    }
+  }
+  
+  > input:checked + label > .tab-container .icon {
+    background-color: #999;
+    animation-name: icon-active;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+  }
+
+  > input:checked {
+    & ~ .balls > .item {
+    }
+
+    &:nth-of-type(1) ~ .balls > .item {
+      // animation: bell-active-1 .4s 1 linear;
+      --bell-x: 0;
+    }
+    &:nth-of-type(2) ~ .balls > .item {
+      // animation: bell-active-2 .4s 1 linear;
+      --bell-x: 104px;
+    }
+    &:nth-of-type(3) ~ .balls > .item {
+      // animation: bell-active-3 .4s 1 linear;
+      --bell-x: 208px;
+    }
+    &:nth-of-type(4) ~ .balls > .item {
+      // animation: bell-active-4 .4s 1 linear;
+      --bell-x: 312px;
+    }
+    &:nth-of-type(5) ~ .balls > .item {
+      // animation: bell-active-5 .4s 1 linear;
+      --bell-x: 416px;
+    }
+  }
+}
+
+.tab-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  &:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border: 2px solid #dddddd;
+    opacity: 0;
+    transition: all .4s ease;
+  }
+  .icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #ddd;
+    z-index: 1;
+  }
+}
+
+.balls {
+  position: absolute;
+  left: 47px;
+  bottom: 25px;
+}
+
+.balls .item {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #999;
+  transition: all .4s ease;
+  transform: scale(1.0) translateX(var(--bell-x));
+  &:nth-of-type(2) {
+    transition-duration: .6s;
+  }
+  &:nth-of-type(3) {
+    transition-duration: .8s;
+  }
+}
+
+@keyframes ring-active {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@keyframes bell-active-1 {
+  0% {
+    transform: scale(1.0) translateX(0);
+  }
+  30% {
+    transform: scale(1.2) translateX(0);
+  }
+  50% {
+    transform: scale(1.3) translateX(0);
+  }  
+  100% {
+    transform: scale(1.0) translateX(0);
+  }
+}
+
+@keyframes bell-active-2 {
+  0% {
+    transform: scale(1.0) translateX(104px);
+  }
+  30% {
+    transform: scale(1.2) translateX(104px);
+  }
+  50% {
+    transform: scale(1.3) translateX(104px);
+  }  
+  100% {
+    transform: scale(1.0) translateX(104px);
+  }
+}
+@keyframes bell-active-3 {
+  0% {
+    transform: scale(1.0) translateX(208px);
+  }
+  30% {
+    transform: scale(1.2) translateX(208px);
+  }
+  50% {
+    transform: scale(1.3) translateX(208px);
+  }  
+  100% {
+    transform: scale(1.0) translateX(208px);
+  }
+}
+@keyframes bell-active-4 {
+  0% {
+    transform: scale(1.0) translateX(312px);
+  }
+  30% {
+    transform: scale(1.2) translateX(312px);
+  }
+  50% {
+    transform: scale(1.3) translateX(312px);
+  }  
+  100% {
+    transform: scale(1.0) translateX(312px);
+  }
+}
+@keyframes bell-active-5 {
+  0% {
+    transform: scale(1.0) translateX(416px);
+  }
+  30% {
+    transform: scale(1.2) translateX(416px);
+  }
+  50% {
+    transform: scale(1.3) translateX(416px);
+  }  
+  100% {
+    transform: scale(1.0) translateX(416px);
+  }
+}
+
+
+@keyframes icon-active {
+  0% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}

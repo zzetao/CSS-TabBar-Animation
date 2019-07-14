@@ -1,0 +1,157 @@
+:root {
+  --ball-x: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: #519de9;
+}
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 420px;
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  overflow: hidden;
+
+  .body {
+    display: flex;
+    flex: 1;
+    background-color: #ffffff50;
+  }
+
+  .footer {
+    height: 150px;
+    background-color: #fff;
+  }
+
+  .tabbar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 107px;
+
+    .tab-item {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        background-color: #ddd;
+        transform: translateY(0);
+        transition: transform .2s ease;
+      }
+    }
+  
+    > input {
+      display: none;
+    }
+
+    > input:checked {
+      & + label > .icon {
+        transform: translateY(-5px);
+        background-color: #333;  
+      }
+
+      & ~ .ball {
+        animation-duration: 1s;
+        animation-fill-mode: forwards;  
+      }
+
+      &:nth-of-type(1) {
+        & ~ .ball {
+          --bell-x: 0px;
+          animation-name: ball-active-1; 
+        } 
+      }
+      
+      &:nth-of-type(2) {
+        & ~ .ball {
+          --bell-x: 150px;
+          animation-name: ball-active-2; 
+        }
+      }
+      &:nth-of-type(3) {
+        & ~ .ball {
+          --bell-x: 300px;
+          animation-name: ball-active-3; 
+        }
+      }
+      &:nth-of-type(4) {
+        & ~ .ball {
+          --bell-x: 450px;
+          animation-name: ball-active-4;
+        }
+      }
+
+    }
+
+    .ball {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background-color: #ddd;
+      bottom: 20px;
+      left: 70px;
+      transition: all 0.5s linear;
+      transform: translateX(var(--bell-x));    
+    }
+  }
+}
+
+@keyframes ball-active-1 {
+  0% {
+    width: 10px;
+  }
+  
+  50% { width: 80px; }
+
+  100% {
+    width: 10px;
+  }
+}
+@keyframes ball-active-2 {
+  0% {
+    width: 10px;
+  }
+  
+  50% { width: 80px; }
+
+  100% {
+    width: 10px;
+  }
+}
+@keyframes ball-active-3 {
+  0% {
+    width: 10px;
+  }
+  
+  50% { width: 80px; }
+
+  100% {
+    width: 10px;
+  }
+}
+@keyframes ball-active-4 {
+  0% {
+    width: 10px;
+  }
+
+  50% { width: 80px; }
+
+  100% {
+    width: 10px;
+  }
+}
