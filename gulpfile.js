@@ -3,8 +3,6 @@ const uglify = require('gulp-uglify');
 const less = require('gulp-less');
 const browserSync = require('browser-sync').create();
 const typescript = require('gulp-typescript');
-const webpack = require('webpack');
-const webpackStream = require('webpack-stream');
 const autoprefixer = require('gulp-autoprefixer');
 
 task('scripts', () => {
