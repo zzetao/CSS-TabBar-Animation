@@ -1,0 +1,74 @@
+:root {
+  --x: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.tabbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  width: 500px;
+  box-shadow: 0 8px 15px 0 #00000030;
+  border-radius: 80px;
+
+  .tab-item {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      background-color: #ddd;
+      transition: all .3s linear;
+    }
+  }
+
+  .ball {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 125px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: #ed6c2c;
+    z-index: -1;
+    transition: transform .3s ease;
+    transform: translateX(var(--x));
+  }
+
+  > input {
+    display: none;
+  }
+
+  > input:checked {
+    &:nth-of-type(1) ~ .ball {
+      --x: 0;
+    }
+    &:nth-of-type(2) ~ .ball {
+      --x: 100%;
+    }
+    &:nth-of-type(3) ~ .ball {
+      --x: 200%;
+    }
+    &:nth-of-type(4) ~ .ball {
+      --x: 300%;
+    }
+    & + label > .icon {
+      background-color: #fff;  
+    }
+  }
+}
